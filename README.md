@@ -56,3 +56,41 @@ Beschreibe Claude einfach, was das Programm zusätzlich können soll; die
 ```sh
 git pull
 ```
+
+---
+
+# Android-App (Kotlin)
+
+Im Ordner `android/` liegt dieselbe Aufgabenliste als echte Android-App
+(Kotlin + Jetpack Compose).
+
+## APK bekommen – ohne PC
+
+Bei jedem Push nach `main`, der etwas in `android/` ändert, baut GitHub die APK
+automatisch:
+
+1. Im Browser auf GitHub das Repo öffnen → Reiter **Actions**.
+2. Den obersten Lauf **„Android-APK bauen“** öffnen (grüner Haken = fertig).
+3. Unten bei **Artifacts** auf **aufgaben-apk** tippen → lädt eine ZIP-Datei.
+4. ZIP in der Dateien-App öffnen, `app-debug.apk` antippen und installieren
+   (beim ersten Mal „Installation aus unbekannten Quellen“ für den Browser bzw.
+   die Dateien-App erlauben).
+
+Einen Build kannst du auch von Hand starten: Actions → „Android-APK bauen“ →
+**Run workflow**.
+
+Updates lassen sich direkt über die alte Version installieren, weil die APK
+immer mit demselben Debug-Schlüssel (`android/app/debug.keystore`) signiert
+wird. Dieser Schlüssel ist nur zum Testen gedacht, nicht für den Play Store.
+
+## Wo ist was?
+
+| Datei | Inhalt |
+|---|---|
+| `android/app/src/main/java/de/aufgaben/MainActivity.kt` | Der ganze App-Code: Oberfläche und Speichern |
+| `android/app/src/main/res/values/strings.xml` | App-Name |
+| `android/app/build.gradle.kts` | Build-Einstellungen, Version, Bibliotheken |
+| `.github/workflows/android.yml` | Der automatische Build bei GitHub |
+
+Schlägt ein Build fehl (rotes Kreuz bei Actions), steht die Fehlermeldung im
+Log des Laufs – einfach an Claude weitergeben.
