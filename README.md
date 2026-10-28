@@ -69,12 +69,16 @@ Im Ordner `android/` liegt dieselbe Aufgabenliste als echte Android-App
 Bei jedem Push nach `main`, der etwas in `android/` ändert, baut GitHub die APK
 automatisch:
 
-1. Im Browser auf GitHub das Repo öffnen → Reiter **Actions**.
-2. Den obersten Lauf **„Android-APK bauen“** öffnen (grüner Haken = fertig).
-3. Unten bei **Artifacts** auf **aufgaben-apk** tippen → lädt eine ZIP-Datei.
-4. ZIP in der Dateien-App öffnen, `app-debug.apk` antippen und installieren
-   (beim ersten Mal „Installation aus unbekannten Quellen“ für den Browser bzw.
-   die Dateien-App erlauben).
+**Direkter Download (empfohlen):**
+https://github.com/danjack12345/test/releases/latest/download/Aufgaben.apk
+
+Link auf dem Tablet im Browser öffnen → nach dem Download antippen →
+installieren (beim ersten Mal „Installation aus unbekannten Quellen“ für den
+Browser erlauben).
+
+Alternativ als ZIP: Reiter **Actions** → oberster Lauf „Android-APK bauen“ →
+unten bei **Artifacts** auf **aufgaben-apk**. Die ZIP vor dem Installieren
+erst **entpacken**, dann `app-debug.apk` antippen.
 
 Einen Build kannst du auch von Hand starten: Actions → „Android-APK bauen“ →
 **Run workflow**.

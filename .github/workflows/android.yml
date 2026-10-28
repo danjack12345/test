@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -32,3 +34,16 @@ jobs:
         with:
           name: aufgaben-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
+
+      # Direkter Download ohne ZIP:
+      # https://github.com/<user>/<repo>/releases/latest/download/Aufgaben.apk
+      - name: APK als Release veröffentlichen
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk Aufgaben.apk
+          gh release delete apk --yes --cleanup-tag || true
+          gh release create apk Aufgaben.apk --target "$GITHUB_SHA" --latest \
+            --title "Aufgaben-App (neuester Build)" \
+            --notes "Automatisch gebaut aus ${GITHUB_SHA::7}."
