@@ -20,7 +20,6 @@ Acode ist ein Editor; zum **Ausführen** von Python brauchst du zusätzlich
    cd ~/storage/shared
    git clone https://github.com/danjack12345/test.git
    cd test
-   git checkout claude/python-acode-android-nv53sc
    ```
 4. **In Acode öffnen:** Ordner öffnen → `Interner Speicher/test` → `aufgaben.py`.
 5. **Starten** in Termux:
